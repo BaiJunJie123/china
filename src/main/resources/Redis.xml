@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/cache
+                        http://www.springframework.org/schema/cache/spring-cache.xsd">
+<!--        <context:property-placeholder location="classpath:Redis/redis.properties" file-encoding="UTF-8" ignore-unresolvable="true"/>
+ -->  <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+         <property name="maxTotal" value="1000"/>
+        <property name="maxIdle" value="200"/>
+       <property name="maxWaitMillis" value="2000"/>
+         <property name="testOnBorrow" value="false"/>
+    </bean>
+
+     <bean id="JedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+			<property name="hostName" value="127.0.0.1"/>
+			<property name="port" value="6379"/>
+			<!-- <property name="password" value="root"/> -->
+			<property name="poolConfig" ref="jedisPoolConfig"/>
+		</bean>
+			<bean id="reidsTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+			<property name="connectionFactory" ref="JedisConnectionFactory"/>
+		</bean>
+		<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+			<property name="caches">
+				<set>
+					<bean class="com.ssm.util.redisUtil">
+							<property name="redisTemplate" ref="reidsTemplate"/>
+							<property name="name" value="test"/>
+					</bean>
+					
+				</set>
+				
+			</property>
+		</bean>
+		<context:component-scan base-package="com.ssm.service"/>
+</beans>
