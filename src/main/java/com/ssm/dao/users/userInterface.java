@@ -8,4 +8,6 @@ import com.ssm.entity.user;
 
 public interface userInterface {
    public List<user> findusers(@Param("user")user user);
+   
+   public void clean();
 }

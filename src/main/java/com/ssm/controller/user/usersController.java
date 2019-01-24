@@ -25,4 +25,11 @@ public class usersController {
 		}
 		return "userjsp/login";
 	}
+    @RequestMapping("clean.html")
+    public String show() {
+    	
+    	userService.clean();
+    	
+    	return "userjsp/login";
+    }
 }

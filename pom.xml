@@ -28,6 +28,32 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>com.alibaba</groupId>
+    	<artifactId>fastjson</artifactId>
+    	<version>1.2.32</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.json</groupId>
+    	<artifactId>json</artifactId>
+    	<version>20171018</version>
+	</dependency>
+	 <!-- http client -->
+	  <dependency> 
+         <groupId>org.apache.httpcomponents</groupId> 
+          <artifactId>httpclient</artifactId> 
+         <version>4.5.6</version>         
+    </dependency> 
+    <dependency> 
+         <groupId>org.apache.httpcomponents</groupId> 
+          <artifactId>httpclient-cache</artifactId> 
+         <version>4.5.6</version>         
+    </dependency> 
+    <dependency> 
+         <groupId>org.apache.httpcomponents</groupId> 
+          <artifactId>httpmime</artifactId> 
+         <version>4.5.6</version>         
+    </dependency>
     <!-- spring核心包 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -120,11 +146,11 @@
 		</dependency>
 		<!-- 日志文件管理包 -->
 		<!-- log start -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
-		</dependency>
+		</dependency> -->
 
 
 		<!-- 格式化对象，方便输出日志 -->
