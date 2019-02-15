@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
@@ -45,7 +46,7 @@ public class redisUtil implements Cache {
 	@Override
 	 public ValueWrapper get(Object key) {
         // TODO Auto-generated method stub
-        System.out.println("µÃµ½ key");
+        System.out.println("ï¿½Ãµï¿½ key");
         final String keyf = key.toString();
         Object object = null;
         object = redisTemplate.execute(new RedisCallback<Object>() {
@@ -78,7 +79,7 @@ public class redisUtil implements Cache {
 	@Override
 	 public void put(Object key, Object value) {
         // TODO Auto-generated method stub
-        System.out.println("Ð´Èë key");
+        System.out.println("Ð´ï¿½ï¿½ key");
         final String keyf = key.toString();
         final Object valuef = value;
         final long liveTime = 86400;
@@ -162,4 +163,9 @@ public class redisUtil implements Cache {
 	            }
 	        });
 	    }
+	public void show() {
+		
+		redisTemplate.opsForList().leftPush("aa", "hello");
+		
+	}
 }

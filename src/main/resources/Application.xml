@@ -45,7 +45,7 @@
 	 	   <aop:around method="huan" pointcut-ref="pointcut"/>
 	 	 </aop:aspect>
 	 	</aop:config>
-	 
+	  
 	  <import resource="classpath:Redis.xml"/>
 	  <cache:annotation-driven cache-manager="cacheManager"/> <!-- 必须指定缓存管理器是自己配置的 -->
     <context:component-scan base-package="com.ssm.service"/>
