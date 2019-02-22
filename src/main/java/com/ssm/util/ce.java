@@ -1,9 +1,11 @@
 package com.ssm.util;
 
 
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,6 +49,26 @@ public class ce {
 			fileout.close();
 			out.close();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
+	 @Test
+	 public void ss() {
+		 byte[] zu = new byte[1024];
+		 File file = new File("");
+		 try {
+			OutputStream out  = new FileOutputStream(file);
+			BufferedOutputStream buf = new BufferedOutputStream(out);
+			try {
+				buf.write(zu);
+				buf.close();
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
