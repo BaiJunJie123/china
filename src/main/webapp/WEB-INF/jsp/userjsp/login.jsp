@@ -5,12 +5,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html  lang="en">
   <head>
     <base href="<%=basePath%>">
-    
-    <title>My JSP 'login.jsp' starting page</title>
-    
+      <title>HTML5页面如何在手机端浏览器调用相机、相册功能</title>
+ 	 <meta charset="UTF-8">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -21,8 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
-  <body>
-    This is my JSP page. HELLO <br>
-  </body>
-</html>
+    <body>
+    
+    <div>
+        <input type="file" accept="image/*" capture="camera">
+        <input type="file" accept="video/*" capture="camcorder">
+        <input type="file" accept="audio/*" capture="microphone">
+    </div>
+    </body>
+    </html>
