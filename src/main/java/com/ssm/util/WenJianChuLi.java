@@ -13,14 +13,13 @@ import org.junit.Test;
 public class WenJianChuLi {
 
 	
-	public String chuLiTxt(File file) {
-		InputStream bytestr = null;
-		try {
-			bytestr = new FileInputStream(file);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public String chuLiTxt(InputStream bytestr) {
+		/*
+		 * InputStream bytestr = null; try { bytestr = new FileInputStream(file); }
+		 * catch (FileNotFoundException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
+		String data = "";
 		InputStreamReader redstr = new InputStreamReader(bytestr);
 		
 		BufferedReader read = new BufferedReader(redstr);
@@ -31,14 +30,16 @@ public class WenJianChuLi {
 				if(count%2==0) {
 					String code = line.substring(line.lastIndexOf("/")+1, line.length());
 					if(code.indexOf("b")==0) {
-						System.out.println(code);
+						//System.out.println(code);
 					}else {
-						System.out.println("路径后不是以b开头");
+						//System.out.println("路径后不是以b开头");
+						data += "第"+(count+1)+"行:路径后不是以b开头";
 					}
 				}else if(line.indexOf("8")==0){
 					System.out.println(line);
 				}else {
-					System.out.println("不是以8开头");
+					//System.out.println("不是以8开头");
+					data += "第"+(count+1)+"行:不是以8开头";
 				}
 				count++;
 				
@@ -51,12 +52,9 @@ public class WenJianChuLi {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
-	}
-	@Test
-	public void ce() {
-	  String path = "C:\\Users\\A\\Desktop\\1\\newTxt.txt";
-	  File file = new File(path);
-	  chuLiTxt(file);
+		if(data.equals("")) {
+			data = "全部读取成功！";
+		}
+		return data;
 	}
 }

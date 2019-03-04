@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		aaaaaaa
+		<div id="app">
+			<form action="" method="post">
+				
+				<input type="file" id="tu" name="fu" @change="getfile"/>
+			</form>
+			<br/>
+			<button v-on:click="dian">点击上传</button>
+		</div>
+	</body>
+	<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+	<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+     <script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				file : null
+			},
+			methods:{
+				dian : function(){
+					let da = new FormData();
+					da.append("tu",this.file);
+					this.$http.post('http://127.0.0.1:8080/china/chuli',da,{emulateJSON:true}).then(function(data){
+						var json=data.body;
+						console.log(json.bjj);
+						alert(json.bjj);
+					},function(res){
+						alert("error");
+					});
+				},
+				getfile : function($event){
+					this.file = $event.target.files[0];
+				}
+			}
+		});
+	</script>
+</html>

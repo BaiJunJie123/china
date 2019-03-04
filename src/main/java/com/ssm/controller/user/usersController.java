@@ -1,5 +1,7 @@
 package com.ssm.controller.user;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,7 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssm.entity.user;
-import com.ssm.service.serviceUsers.*;;
+import com.ssm.service.serviceUsers.*;
+import com.ssm.util.WenJianChuLi;;
 @Controller
 public class usersController {
 	@Resource
@@ -33,14 +36,26 @@ public class usersController {
     @CrossOrigin
     @ResponseBody
     public Object show(@RequestParam("tu") MultipartFile tu) {
+    	InputStream in = null;
+    	String data = "";
     	 if(tu.isEmpty()) {
     		 System.out.println("空的");
     	 }else {
-    		 System.out.println("不是空的");
+    		 WenJianChuLi wu = new WenJianChuLi();
+    		 try {
+    				in = tu.getInputStream();
+    				 data =wu.chuLiTxt(in);
+    				in.close();
+    			} catch (IOException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
     	 }
+    	
+    	
     	//userService.clean();
     	System.out.println("aaaa");
-    	String zhi = "{\"bjj\":\"success\"}";
+    	String zhi = "{\"bjj\":\""+data+"\"}";
     	return zhi;
     }
 }
