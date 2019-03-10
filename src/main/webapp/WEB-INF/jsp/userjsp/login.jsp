@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input type="file" accept="image/*" capture="camera">
         <input type="file" accept="video/*" capture="camcorder">
         <input type="file" accept="audio/*" capture="microphone">
+        <a href="http://localhost:8080/china/guo/success.html">aaa</a>
     </div>
     </body>
     </html>

@@ -16,7 +16,7 @@
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
        <property name="location" value="classpath:database.properties"/>
     </bean>
-    
+     
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
       	<property name="driverClassName" value="${driver}"/>
 		<property name="url" value="${url}"/>
@@ -51,6 +51,13 @@
 	 	</aop:config>
 	  
 	  <import resource="classpath:Redis.xml"/>
+	  <import resource="classpath:springContextShiro.xml"/>
+	  <!-- 	<aop:config proxy-target-class="true"></aop:config>
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean> -->
+	  
 	  <cache:annotation-driven cache-manager="cacheManager"/> <!-- 必须指定缓存管理器是自己配置的 -->
     <context:component-scan base-package="com.ssm.service"/>
  </beans>

@@ -15,6 +15,8 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import com.ssm.service.serviceUsers.one;
+
 public class ce {
 	  @Test
 	 public void show() {
@@ -72,5 +74,10 @@ public class ce {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	 }
+	 @Test
+	 public void show2() {
+		
+		 
 	 }
 }

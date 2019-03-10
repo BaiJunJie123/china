@@ -28,6 +28,22 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <!-- shiro   shiro-core -->
+    <dependency>
+    	<groupId>org.apache.shiro</groupId>
+    	<artifactId>shiro-all</artifactId>
+    	<version>1.4.0</version>
+	</dependency>
+	<!-- <dependency>
+	    <gruopId>org.apache.shiro</groupId>
+	    <artifactId>shiro-all</artifactId>
+	    <version>1.2.2</version>
+	</dependency> -->
+    <dependency>
+	    <groupId>commons-logging</groupId>
+	    <artifactId>commons-logging</artifactId>
+	    <version>1.1.3</version>
+	</dependency>
       <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
