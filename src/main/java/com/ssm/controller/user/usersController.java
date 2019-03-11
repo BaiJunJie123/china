@@ -31,8 +31,8 @@ public class usersController {
    
 	public String login() {
     	String url = "";
-    	String name ="ss";
-    	String pass = "ss";
+    	String name ="sw";
+    	String pass = "sw";
     	UsernamePasswordToken token = new UsernamePasswordToken(name,pass);
 		token.setRememberMe(true);
 	    System.out.println("为了验证登录用户而封装的token为" + ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));  
@@ -43,6 +43,7 @@ public class usersController {
     		 System.out.println("对用户[" + name + "]进行登录验证..验证通过");  
     	 }catch(Exception e) {
     		 e.printStackTrace();
+    		 return "userjsp/error";
     	 }
     	
     	 

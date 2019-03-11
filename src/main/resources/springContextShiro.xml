@@ -42,7 +42,8 @@
         
         <property name="filterChainDefinitions"> 
         	<value>
-        		/guo**=authc,perms["admin:good"]
+        		/guo/success=authc,perms[good]
+        		/guo/login=anon
         		/user**=anon
         	
         	</value>
