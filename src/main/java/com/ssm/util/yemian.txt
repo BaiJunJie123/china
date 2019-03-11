@@ -12,7 +12,7 @@
 				<input type="file" id="tu" name="fu" @change="getfile"/>
 			</form>
 			<br/>
-			<button v-on:click="dian">点击上传</button>
+			<button v-on:click="dian">点击验证</button>
 		</div>
 	</body>
 	<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
