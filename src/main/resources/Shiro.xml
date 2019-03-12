@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+		
+		 <bean id="myRealm" class="com.ssm.util.UserRealm"/>
+		 
+		 <bean id="srcurityMnager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		    <property name="realm" ref="myRealm"/>
+		 </bean>
+		 
+		 <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		   <property name="securityManager" ref="srcurityMnager"/>
+		   <property name="loginUrl" value="/success.do" /> <!-- 验证用户与权限的地址 -->
+       <!--  <property name="successUrl" value="/cheng.html" /> -->
+        <property name="unauthorizedUrl" value="/error.html"/>
+        <property name="filterChainDefinitions" >
+            <value><!-- ,roles[admin] -->
+              /success.do=anon
+              /cheng.html=authc,roles[admin]
+        	  /login.html=anon
+        	  /**=anon
+            </value>
+        </property>
+		 </bean>
+</beans>

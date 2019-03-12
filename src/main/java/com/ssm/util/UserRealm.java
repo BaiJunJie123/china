@@ -25,10 +25,10 @@ public class UserRealm extends AuthorizingRealm {
 			info.addRole("admin");
 			info.addStringPermission("good");
 			System.out.println("进行了权限认证");
-			this.setSession("shouquan", "adminSuccess");
+			//this.setSession("shouquan", "adminSuccess");
 		}else {
 			System.out.println("没有权限授权");
-			this.setSession("shouquan", "adminError");
+			//this.setSession("shouquan", "adminError");
 		}
 
 		
@@ -39,19 +39,19 @@ public class UserRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
 		// TODO Auto-generated method stub
 		String name = arg0.getPrincipal().toString();
-		System.out.println(name+"=====================");
-		String pass = "bjj";
+		//System.out.println(name+"=====================");
+		String pass = new String( (char[])arg0.getCredentials());
 		UsernamePasswordToken token = new UsernamePasswordToken(name,pass);
 		SimpleAuthenticationInfo info =null;
 		/* token.setRememberMe(true); */
 		if(name.equals("bjj")) {
-			info = new SimpleAuthenticationInfo(name,pass,this.getName());
+			info = new SimpleAuthenticationInfo(name,pass,null,this.getName());
 			System.out.println("验证通过");
-			this.setSession("yanzheng", "bjjSuccess");
+			//this.setSession("yanzheng", "bjjSuccess");
 		}else {
 			System.out.println("验证失败");
-			this.setSession("yanzheng", "bjjError");
-			token.clear();
+			//this.setSession("yanzheng", "bjjError");
+			//token.clear();
 		}
 		return info;
 	}

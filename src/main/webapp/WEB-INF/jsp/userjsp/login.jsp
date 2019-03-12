@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input type="file" accept="video/*" capture="camcorder">
         <input type="file" accept="audio/*" capture="microphone">
         <a href="http://localhost:8080/china/guo/success.html">aaa</a> -->
-        <form action="http://127.0.0.1:8080/china/guo/success.html" method="post">
+        <form action="http://127.0.0.1:8080/china/success.do" method="post">
         	<input type="text" name="name" id="name"/>
         	<input type="password" name="pass" id="pass"/>
         	<input type="submit" value="提交"/>
