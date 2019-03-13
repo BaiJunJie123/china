@@ -23,10 +23,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <body>
     
     <div>
-        <input type="file" accept="image/*" capture="camera">
+     <!--    <input type="file" accept="image/*" capture="camera">
         <input type="file" accept="video/*" capture="camcorder">
         <input type="file" accept="audio/*" capture="microphone">
-        <a href="http://localhost:8080/china/guo/success.html">aaa</a>
+        <a href="http://localhost:8080/china/guo/success.html">aaa</a> -->
+        <form action="http://127.0.0.1:8080/china/guo/cheng/success.html" method="post">
+        	<input type="text" name="name" id="name"/>
+        	<input type="password" name="pass" id="pass"/>
+        	<input type="submit" value="提交"/>
+        </form>
     </div>
     </body>
     </html>
