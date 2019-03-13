@@ -51,7 +51,7 @@
 	 	</aop:config>
 	  
 	  <import resource="classpath:Redis.xml"/>
-	  <import resource="classpath:Spring-Shiro.xml"/>
+	  <import resource="classpath:Shiro.xml"/>
 	  <!-- 	<aop:config proxy-target-class="true"></aop:config>
 	<bean
 		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">

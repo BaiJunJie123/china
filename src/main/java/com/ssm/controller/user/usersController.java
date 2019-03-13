@@ -22,13 +22,21 @@ import com.ssm.entity.user;
 import com.ssm.service.serviceUsers.*;
 import com.ssm.util.WenJianChuLi;;
 @Controller
-@RequestMapping("/guo")
+/* @RequestMapping("/guo") */
 public class usersController {
 	@Resource
 	private userService userService;
-	
+	 @RequestMapping("/cheng.html")
+		public String login4() {
+			/*
+			 * user uu = new user(); uu.setId(86101); List<user> ji =
+			 * userService.findusers(uu); for(user s : ji) {
+			 * System.out.println(s.getAgent_status()+"======================"); }
+			 */
+			
+			return "userjsp/cheng";
+	 }
     @RequestMapping("/login.html")
-   
 	public String login() {
           
 		/*
@@ -39,8 +47,7 @@ public class usersController {
 		
 		return "userjsp/login";
 	}
-    @RequestMapping("/cheng/success.html")
-    
+    @RequestMapping("/success.do")
  	public String login2(@RequestParam("name") String name,@RequestParam("pass") String pass) {
  		System.out.println("good success");
  		try {
@@ -50,7 +57,7 @@ public class usersController {
  	 		 subject.login(token);
  	 		System.out.println( subject.hasRole("admin")+"是否有这个角色");
  	 		 System.out.println("Contorller验证成功");
- 	 		return "userjsp/success";
+ 	 		return "redirect:/cheng.html";
  	 		
  		}catch(Exception e) {
  			 System.out.println("Contorller验证失败");
@@ -59,7 +66,7 @@ public class usersController {
  		}
  	    
  		/*
- 		 * user uu = new user(); uu.setId(86101); List<user> ji =
+ 		 * user uu = new us   er(); uu.setId(86101); List<user> ji =
  		 * userService.findusers(uu); for(user s : ji) {
  		 * System.out.println(s.getAgent_status()+"======================"); }
  		 */
@@ -68,9 +75,7 @@ public class usersController {
  @RequestMapping("/error.html")
     
  	public String login3() {
- 		System.out.println("good error");
- 		Subject subject = SecurityUtils.getSubject();
- 		subject.logout();
+ 		
  		/*
  		 * user uu = new user(); uu.setId(86101); List<user> ji =
  		 * userService.findusers(uu); for(user s : ji) {
