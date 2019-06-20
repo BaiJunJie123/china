@@ -17,9 +17,9 @@
         <property name="unauthorizedUrl" value="/error.html"/>
         <property name="filterChainDefinitions" >
             <value><!-- ,roles[admin] -->
-              /success.do=anon
+              /success=anon
               /cheng.html=authc,roles[admin]
-        	  /login.html=anon
+        	  /login.html=authc
         	  /**=anon
             </value>
         </property>

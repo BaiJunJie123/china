@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -37,8 +39,8 @@ public class usersController {
 			return "userjsp/cheng";
 	 }
     @RequestMapping("/login.html")
-	public String login() {
-          
+	public String login(HttpServletResponse response) {
+    	response.setHeader("Access-Control-Allow-Origin", "*");
 		/*
 		 * user uu = new user(); uu.setId(86101); List<user> ji =
 		 * userService.findusers(uu); for(user s : ji) {
@@ -47,9 +49,12 @@ public class usersController {
 		
 		return "userjsp/login";
 	}
-    @RequestMapping("/success.do")
- 	public String login2(@RequestParam("name") String name,@RequestParam("pass") String pass) {
+    @RequestMapping("/success")
+    @ResponseBody
+ 	public String login2(@RequestParam("name") String name,@RequestParam("pass") String pass,HttpServletResponse response) {
+    	response.setHeader("Access-Control-Allow-Origin", "*");
  		System.out.println("good success");
+ 		 String zhi ="";
  		try {
  			 Subject subject = SecurityUtils.getSubject();
  	 	     UsernamePasswordToken token = new UsernamePasswordToken(name,pass);
@@ -57,16 +62,18 @@ public class usersController {
  	 		 subject.login(token);
  	 		System.out.println( subject.hasRole("admin")+"是否有这个角色");
  	 		 System.out.println("Contorller验证成功");
- 	 		return "redirect:/cheng.html";
- 	 		
+ 	 		//return "redirect:/cheng.html";
+ 	 		 zhi = "{\"fan\":\"success\"}";
+ 	 		return zhi;
  		}catch(Exception e) {
  			 System.out.println("Contorller验证失败");
- 			return "userjsp/error";
- 			
+ 			//return "userjsp/error";
+ 			 zhi = "{\"fan\":\"Nosuccess\"}";
+ 			return zhi;
  		}
  	    
  		/*
- 		 * user uu = new us   er(); uu.setId(86101); List<user> ji =
+ 		 * user uu = new user(); uu.setId(86101); List<user> ji =
  		 * userService.findusers(uu); for(user s : ji) {
  		 * System.out.println(s.getAgent_status()+"======================"); }
  		 */
